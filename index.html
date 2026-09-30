@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>Ice Ice Bebé</title>
+  <meta name="description" content="Help Jose run home to Mom's: an HD cartoon runner with double jumps, burrito throws and stomps.">
+  <meta name="theme-color" content="#0d0f1a">
+  <meta name="color-scheme" content="dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Ice Bebé">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main id="app" class="app">
+    <header class="bar">
+      <button type="button" id="menu-btn" class="bar-btn" aria-label="Title screen" title="Title screen (Esc to pause)">☰</button>
+      <canvas class="iib-logo bar-logo" role="img" aria-label="Ice Ice Bebé"></canvas>
+      <span class="bar-spacer" aria-hidden="true"></span>
+    </header>
+    <section id="game" class="stage" aria-label="Ice Ice Bebé game"></section>
+    <p class="keys-hint" aria-hidden="true"><kbd>Space</kbd> / <kbd>↑</kbd> jump · <kbd>X</kbd> throw · <kbd>P</kbd> pause · <kbd>M</kbd> sound · <kbd>R</kbd> restart</p>
+
+    <section id="title" class="title-screen" role="dialog" aria-modal="true" aria-labelledby="t-h" hidden>
+      <div class="t-inner">
+        <h1 id="t-h" class="sr-only">Ice Ice Bebé</h1>
+        <canvas class="iib-logo t-logo" aria-hidden="true"></canvas>
+        <p class="t-tag">Help Jose run home to Mom's!</p>
+        <ol class="t-levels" id="t-levels" aria-label="The 5 levels"></ol>
+        <div class="t-gap" aria-hidden="true"></div>
+        <div class="t-actions">
+          <button type="button" id="t-play" class="lot-btn lot-main t-big">▶ Play</button>
+          <button type="button" id="t-cont" class="lot-btn t-cont" hidden></button>
+        </div>
+        <p class="t-best" id="t-best"></p>
+        <details class="t-how" id="t-how">
+          <summary>How to play</summary>
+          <div class="t-how-body">
+            <p><b>Phone:</b> tap the game or <b>⤒ Jump</b> to jump, tap again in the air to <b>double-jump</b>. Tap <b>Throw</b> to toss a burrito.</p>
+            <p><b>Keyboard:</b> <kbd>Space</kbd> / <kbd>↑</kbd> / <kbd>W</kbd> jump (twice for a double jump) · <kbd>X</kbd> / <kbd>F</kbd> throw · <kbd>P</kbd> or <kbd>Esc</kbd> pause · <kbd>R</kbd> restart the level · <kbd>M</kbd> sound · <kbd>Enter</kbd> next level.</p>
+            <p>🌯 A burrito <b>bonks</b> an agent (he sits down dizzy). Land on an agent's cap to <b>stomp</b> him flat and bounce. Hop the cones, dodge the SUVs, grab ☕ coffee for speed and a 🩴 flip-flop for a shield. Caught? Back to the last 🚩 checkpoint. Nobody gets hurt.</p>
+            <p class="t-ios" id="t-ios" hidden>📲 To install on iPhone: tap <b>Share</b>, then <b>Add to Home Screen</b>.</p>
+          </div>
+        </details>
+        <div class="t-foot">
+          <button type="button" id="t-sound" class="lot-btn t-small" aria-pressed="true">🔊 Sound on</button>
+          <button type="button" id="t-install" class="lot-btn t-small" hidden>📲 Install</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <noscript><p class="noscript">Ice Ice Bebé needs JavaScript to run.</p></noscript>
+  <script src="js/game.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

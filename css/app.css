@@ -1,0 +1,92 @@
+/* Ice Ice Bebé: a full-screen portrait game on phones, a centered portrait column on desktop. No yellow anywhere. */
+:root{--bg:#0d0f1a;--panel:#1b1f2e;--line:#3a4058;--turq:#00b8b0;--turq-l:#3ee8eb;--pink:#ff3d8b;--orange:#ff6c1c;--ink:#1d1426;--text:#fff;--muted:#c9d0d8;--focus:#ff3d8b;
+  --col:min(100vw,max(400px,calc(100dvh * .56)));font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);overscroll-behavior:none}
+body{background:radial-gradient(120% 80% at 50% 0%,#2a2140 0%,#141726 55%,#0d0f1a 100%) fixed;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:4px solid var(--focus);outline-offset:2px}
+kbd{display:inline-block;min-width:1.5em;padding:0 .35em;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;background:#141726;color:#fff;font:inherit;font-size:.85em;font-weight:800;text-align:center;line-height:1.35}
+
+/* the app column */
+.app{position:relative;width:var(--col);height:100vh;height:100dvh;margin:0 auto;display:flex;flex-direction:column;overflow:hidden;background:var(--bg);
+  padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);touch-action:manipulation}
+.bar{flex:none;display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:6px;padding:6px 10px;min-height:52px}
+.bar-btn{width:44px;height:44px;padding:0;display:grid;place-items:center;border:2px solid #fff;border-radius:50%;background:#000;color:#fff;font-size:1.2rem;font-weight:900;line-height:1}
+.iib-logo{display:block;aspect-ratio:60/15;height:auto}
+.bar-logo{justify-self:center;width:min(150px,100%)}
+.stage{flex:1 1 0;min-height:0;display:flex;flex-direction:column}
+.keys-hint{display:none;flex:none;margin:0;padding:0 10px 10px;text-align:center;color:var(--muted);font-size:.8rem;font-weight:700}
+@media (hover:hover) and (pointer:fine) and (min-height:560px){ .keys-hint{display:block} }
+
+/* the game (markup comes from js/game.js) */
+.lot-btn{min-height:44px;padding:.3em .8em;border:2px solid var(--ink);border-radius:12px;background:#fff;color:#000;font-weight:800}
+.lot-main{background:var(--turq);border-color:#000;color:#000}
+.ice-wrap{position:relative;flex:1 1 0;min-height:0;overflow:hidden;background:#0d0f1a}
+.ice-cv{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block;margin:0;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.ice-note{display:none}
+.ice-ov{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.3em;padding:.5em;color:#fff;font-size:.95em;
+  background:rgba(0,0,0,.62);font-weight:700;line-height:1.25}
+.ice-ov.on{display:flex}
+.ice-ov.soft{background:rgba(0,0,0,.42)}
+.ice-ov p{margin:0}
+.ice-big{font-size:1.4em;line-height:1.1;font-weight:900;color:var(--turq-l);text-shadow:2px 2px 0 #000}
+.ice-btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:.4em!important}
+.ice-ov .lot-btn{border-color:#000}
+.ice-ov .lot-btn:not(.lot-main){background:#fff;color:#000}
+.ice-ov.caught{justify-content:flex-end;padding-bottom:1em;background:none}
+.ice-caught{background:#000;border-radius:10px;padding:.2em .7em}
+.ice-ov.win{background:none;justify-content:flex-start;padding-top:1.5em;pointer-events:none}
+.ice-ov.win .ice-big{background:rgba(0,0,0,.6);border-radius:10px;padding:.15em .5em;font-size:1.2em}
+.ice-ov.win button{pointer-events:auto}
+.ice-win-score{font-weight:800;background:rgba(0,0,0,.6);border-radius:8px;padding:.1em .5em}
+.ice-ov.clear{justify-content:flex-start;padding-top:max(3.6em,11%);background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.35) 32%,rgba(0,0,0,0) 48%)}
+.ice-ov.clear .ice-big{font-size:1.25em}
+.ice-controls{flex:none;display:flex;flex-wrap:nowrap;margin:0;padding:8px 10px 10px;gap:8px}
+.ice-controls .lot-btn{flex:none;min-width:46px;min-height:56px;padding:0 .4em;background:var(--panel);color:#fff;border-color:var(--line);font-size:1.15rem;touch-action:manipulation}
+.ice-controls .ice-jump{flex:1 1 auto;min-width:0;white-space:nowrap;background:var(--turq);color:#000;border-color:#000;font-size:1.25rem;font-weight:900}
+.ice-controls .ice-throw{flex:0 0 76px;min-width:0;padding:2px .2em 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;line-height:1;background:var(--pink);color:#fff;border-color:#000}
+.ice-burr{display:block;width:36px;height:22px}
+.ice-tlbl{font-size:.74rem;font-weight:900;letter-spacing:.02em}
+.ice-lbl{display:none}
+.ice-controls .lot-btn:active{transform:translateY(1px)}
+@media (max-width:339px){ .ice-controls .ice-throw{flex-basis:62px} .ice-controls{gap:6px;padding:6px 8px 8px} }
+
+/* the title screen: covers the whole app column, the street scene shows through in the middle */
+.title-screen{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;
+  padding:max(14px,env(safe-area-inset-top,0px)) max(14px,env(safe-area-inset-right,0px)) max(14px,env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px));
+  background:linear-gradient(180deg,rgba(13,15,26,.92) 0%,rgba(13,15,26,.55) 26%,rgba(13,15,26,0) 42%,rgba(13,15,26,0) 55%,rgba(13,15,26,.78) 70%,rgba(13,15,26,.96) 100%)}
+.title-screen[hidden]{display:none}
+.t-inner{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:0;overflow:auto;text-align:center}
+.t-logo{width:min(92%,420px);filter:drop-shadow(0 6px 0 rgba(0,0,0,.45));animation:t-bob 2.6s ease-in-out infinite}
+@keyframes t-bob{50%{transform:translateY(-4px) rotate(-1deg)}}
+.t-tag{margin:0;font-size:clamp(1rem,4.6vw,1.25rem);font-weight:900;text-shadow:2px 2px 0 #000}
+.t-levels{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:5px;max-width:420px}
+.t-levels li{display:flex;align-items:center;gap:.3em;padding:.18em .55em .18em .2em;border:2px solid var(--line);border-radius:999px;background:rgba(20,23,38,.85);color:var(--muted);font-size:.78rem;font-weight:800}
+.t-levels li.on{border-color:var(--turq);color:#fff}
+.t-n{display:grid;place-items:center;width:1.45em;height:1.45em;border-radius:50%;background:var(--line);color:#fff;font-size:.8em}
+.t-levels li.on .t-n{background:var(--pink)}
+.t-gap{flex:1 1 auto;min-height:24px}
+.t-actions{display:flex;flex-direction:column;align-items:stretch;gap:8px;width:min(100%,340px)}
+.t-big{min-height:62px;font-size:1.45rem;font-weight:900;border-width:3px;box-shadow:0 5px 0 #000}
+.t-cont{min-height:50px;font-size:1.05rem;background:#fff;color:#000;border-color:#000;box-shadow:0 4px 0 #000}
+.t-best{margin:2px 0 0;min-height:1.2em;font-weight:800;font-size:.92rem;text-shadow:1px 1px 0 #000}
+.t-how{width:min(100%,420px);border:2px solid var(--line);border-radius:14px;background:rgba(20,23,38,.92);text-align:left}
+.t-how summary{min-height:44px;display:flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer;list-style:none}
+.t-how summary::-webkit-details-marker{display:none}
+.t-how summary::after{content:"▾";margin-left:.4em}
+.t-how[open] summary::after{content:"▴"}
+.t-how-body{padding:0 12px 10px;font-size:.86rem;line-height:1.4}
+.t-how-body p{margin:.35em 0}
+.t-foot{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.t-small{min-height:44px;font-size:.9rem;background:var(--panel);color:#fff;border-color:var(--line)}
+.noscript{position:fixed;inset:auto 0 40% 0;text-align:center;font-weight:800}
+@media (prefers-reduced-motion:reduce){ .t-logo{animation:none} }
+/* desktop: a framed portrait column */
+@media (min-width:700px) and (hover:hover){ .app{box-shadow:0 0 0 2px #2a2f45,0 20px 60px rgba(0,0,0,.6)} }
+.lot-stats{display:none}
+body.on-title .bar,body.on-title .ice-controls,body.on-title .keys-hint{visibility:hidden}
+.title-screen{background:linear-gradient(180deg,#0d0f1a 0%,#0d0f1a 15%,rgba(13,15,26,.8) 23%,rgba(13,15,26,0) 34%,rgba(13,15,26,0) 68%,rgba(13,15,26,.9) 76%,rgba(13,15,26,.98) 84%)}
+.t-actions .lot-main:focus-visible{outline-color:#fff}
+.ice-pz{display:block;width:20px;height:20px;margin:auto}
